@@ -10,32 +10,25 @@ const main = async () => {
       "https://www.mobafire.com/images/champion/skins/landscape/irelia-high-noon-762x.jpg",
     ],
     [100, 200, 300, 100, 150], // HP values
-    [100, 50, 25, 100, 50] // Attack damage values
+    [100, 50, 25, 100, 50],
+    "Baron", // Attack damage values
+    "https://i.pinimg.com/originals/77/fc/bc/77fcbc873b7a671b848c00edad007348.jpg",
+    10000,
+    50
   );
   await gameContract.deployed();
+
   console.log("Contract deployed to:", gameContract.address);
 
   let txn;
-  txn = await gameContract.mintCharacterNFT(0);
-  await txn.wait();
-  console.log("Minted NFT #1");
-
-  txn = await gameContract.mintCharacterNFT(1);
-  await txn.wait();
-  console.log("Minted NFT #2");
-
   txn = await gameContract.mintCharacterNFT(2);
   await txn.wait();
-  console.log("Minted NFT #3");
 
-  txn = await gameContract.mintCharacterNFT(3);
+  txn = await gameContract.attackBoss();
   await txn.wait();
-  console.log("Minted NFT #4");
 
-  txn = await gameContract.mintCharacterNFT(4);
+  txn = await gameContract.attackBoss();
   await txn.wait();
-  console.log("Minted NFT #5");
-
   console.log("Done deploying and minting!");
 };
 
